@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>The Legend of Zelda (NES).jpg</Source>
+      <Name>The Legend of Zelda (NES)</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES).xnb</Output>
+      <Time>2015-04-20T22:46:32-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Link.png</Source>
+      <Name>Link</Name>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Link.xnb</Output>
+      <Time>2015-04-20T23:03:48-04:00</Time>
+    </Item>
+    <Item>
+      <Source>The Legend of Zelda (NES) - Intro (Main Theme).mp3</Source>
+      <Name>The Legend of Zelda (NES) - Intro (Main Theme)</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).xnb</Output>
+      <Extra>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).wma</Extra>
+      <Time>2015-04-20T22:48:08-04:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>E:\MayTheFourth\MayTheFourthContent\</RootDirectory>
+      <LoggerRootDirectory>E:\MayTheFourth\MayTheFourth\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\MayTheFourth\MayTheFourthContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2015-02-06T01:00:43.7766-05:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

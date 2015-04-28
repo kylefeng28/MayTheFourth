@@ -1,0 +1,2 @@
+X:\MayTheFourth\MayTheFourthContent\obj\x86\Debug\MayTheFourthContent.contentprojResolveAssemblyReference.cache
+E:\MayTheFourth\MayTheFourthContent\obj\x86\Debug\MayTheFourthContent.contentprojResolveAssemblyReference.cache

@@ -1,0 +1,20 @@
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.exe
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.pdb
+X:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.csprojResolveAssemblyReference.cache
+X:\MayTheFourth\MayTheFourth\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+X:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.exe
+X:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES).xnb
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).xnb
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).wma
+X:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Link.xnb
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES).xnb
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Link.xnb
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).xnb
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).wma
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.exe
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.pdb
+E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.csprojResolveAssemblyReference.cache
+E:\MayTheFourth\MayTheFourth\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.exe
+E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
