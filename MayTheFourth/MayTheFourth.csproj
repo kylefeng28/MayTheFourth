@@ -107,8 +107,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="IOManager.cs" />
-    <Compile Include="Sprites\Annakin.cs" />
+    <Compile Include="Sprites\MillenniumFalcon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

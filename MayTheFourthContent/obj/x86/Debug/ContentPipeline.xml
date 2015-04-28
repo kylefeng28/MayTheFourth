@@ -2,31 +2,22 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>The Legend of Zelda (NES).jpg</Source>
-      <Name>The Legend of Zelda (NES)</Name>
+      <Source>Millennium Falcon.png</Source>
+      <Name>Millennium Falcon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES).xnb</Output>
-      <Time>2015-04-20T22:46:32-04:00</Time>
+      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Millennium Falcon.xnb</Output>
+      <Time>2015-04-27T22:58:08-04:00</Time>
     </Item>
     <Item>
-      <Source>Link.png</Source>
-      <Name>Link</Name>
+      <Source>pixel.png</Source>
+      <Name>pixel</Name>
       <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Link.xnb</Output>
-      <Time>2015-04-20T23:03:48-04:00</Time>
-    </Item>
-    <Item>
-      <Source>The Legend of Zelda (NES) - Intro (Main Theme).mp3</Source>
-      <Name>The Legend of Zelda (NES) - Intro (Main Theme)</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).xnb</Output>
-      <Extra>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\The Legend of Zelda (NES) - Intro (Main Theme).wma</Extra>
-      <Time>2015-04-20T22:48:08-04:00</Time>
+      <Output>E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\pixel.xnb</Output>
+      <Time>2015-04-27T22:54:00-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

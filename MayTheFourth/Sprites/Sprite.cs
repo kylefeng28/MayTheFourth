@@ -16,12 +16,14 @@ namespace MayTheFourth.Sprites {
         public Texture2D texture;
         public Rectangle drawBox;
         public float scale = 1f;
+        public float rotation = 0f;
 
         public Vector2 pos = Vector2.Zero;
         public Vector2 vel = Vector2.Zero;
         public Vector2 acc = Vector2.Zero;
 
         public float vel_max = 1f;
+        public float acc_max = 1f;
 
         public Sprite(Game1 game) : base(game) {
             this.game = game;
@@ -50,38 +52,48 @@ namespace MayTheFourth.Sprites {
         public override void Draw(GameTime gameTime) {
             SpriteBatch spriteBatch = game.spriteBatch;
 
-            spriteBatch.Draw(texture, drawBox, Color.White);
+            Vector2 origin = GetOrigin(texture);
+            spriteBatch.Draw(texture, drawBox, null, Color.White, rotation, origin, SpriteEffects.None, 0f);
 
             base.Draw(gameTime);
         }
 
 
         public void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old) {
+            /*
             if (kb.IsKeyDown(Keys.D)) {
                 MoveRight();
             }
             if (kb.IsKeyDown(Keys.A)) {
                 MoveLeft();
             }
+             */
+            if (kb.IsKeyDown(Keys.W)) Forward(10);
+            if (kb.IsKeyDown(Keys.S)) Forward(-10);
+            if (kb.IsKeyDown(Keys.D)) Turn(10);
+            if (kb.IsKeyDown(Keys.A)) Turn(-10);
         }
 
         public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
-            if (pad.ThumbSticks.Left.X > 0)
+            /*
+             if (pad.ThumbSticks.Left.X > 0)
                 MoveRight(1);
+             */
         }
 
-        public void MoveRight(int dir = 1) {
-            // vel.X = dir * vel_max;
-            if (Math.Abs(vel.X) < vel_max) {
-                acc.X = dir;
+        public void Forward(int dir = 1) {
+            if (vel.Length() < vel_max) {
+                acc.X = (float) (dir * acc_max * Math.Cos(rotation));
+                acc.Y = (float) (dir * acc_max * Math.Sin(rotation));
             }
             else {
                 acc.X = 0;
+                acc.Y = 0;
             }
         }
 
-        public void MoveLeft(int dir = 1) {
-            MoveRight(-dir);
+        public void Turn(float ang = 1) {
+            rotation += (float) (ang / 180 * Math.PI);
         }
 
         public void Friction() {
@@ -89,7 +101,7 @@ namespace MayTheFourth.Sprites {
             
             if (Math.Abs(vel.X) > 0) {
                 // acc.X = -dir * 0.5f;
-                vel.X *= 0.9f;
+                vel *= 0.9f;
             }
 
         }
@@ -108,5 +120,8 @@ namespace MayTheFourth.Sprites {
             return rect;
         }
 
+        public Vector2 GetOrigin(Texture2D texture) {
+            return new Vector2(texture.Width / 2, texture.Height / 2);
+        }
     }
 }

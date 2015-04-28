@@ -42,23 +42,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="The Legend of Zelda %28NES%29.jpg">
-      <Name>The Legend of Zelda %28NES%29</Name>
+    <Compile Include="Millennium Falcon.png">
+      <Name>Millennium Falcon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="The Legend of Zelda %28NES%29 - Intro %28Main Theme%29.mp3">
-      <Name>The Legend of Zelda %28NES%29 - Intro %28Main Theme%29</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Link.png">
-      <Name>Link</Name>
+    <Compile Include="pixel.png">
+      <Name>pixel</Name>
       <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

@@ -24,7 +24,7 @@ namespace MayTheFourth {
 
         public TitleScreen titleScreen;
 
-        public Annakin player;
+        public MillenniumFalcon player;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -42,7 +42,7 @@ namespace MayTheFourth {
             io = new IOManager();
 
             titleScreen = new TitleScreen(this);
-            player = new Annakin(this);
+            player = new MillenniumFalcon(this);
 
             titleScreen.Initialize();
             player.Initialize();
@@ -123,7 +123,7 @@ namespace MayTheFourth {
 
             switch (newState) {
             case GameState.Title: {
-                    MediaPlayer.Play(titleScreen.mainTheme);
+                    // MediaPlayer.Play(titleScreen.mainTheme);
                     break;
                 }
             }

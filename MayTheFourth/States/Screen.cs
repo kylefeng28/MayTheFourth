@@ -61,8 +61,8 @@ namespace MayTheFourth.States {
         protected override void LoadContent() {
             ContentManager Content = game.Content;
 
-            mainTheme = Content.Load<Song>("The Legend of Zelda (NES) - Intro (Main Theme)");
-            background = Content.Load<Texture2D>("The Legend of Zelda (NES)"); // TODO
+            // mainTheme = Content.Load<Song>(""); // TODO
+            background = Content.Load<Texture2D>("pixel"); // TODO
             
             base.LoadContent();
         }
