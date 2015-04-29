@@ -11,17 +11,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth.Sprites {
     public class Bullet : Sprite {
+        public float revolution = 0f;
+
         public Bullet(Game1 game) : base(game) {
-            vel_max = 100;
+            ang_acc = 1;
         }
 
         public override void Update(GameTime gameTime) {
-            // vel.X += (float) (vel_max * Math.Cos(rotation));
-            // vel.Y += (float) (vel_max * Math.Sin(rotation));
-
-            vel.X += (float) (vel_max * Math.Cos(rotation));
-            vel.Y += (float) (vel_max * Math.Sin(rotation));
-
+            vel.X = (float) (vel_max * Math.Cos(revolution));
+            vel.Y = (float) (vel_max * Math.Sin(revolution));
             base.Update(gameTime);
         }
 

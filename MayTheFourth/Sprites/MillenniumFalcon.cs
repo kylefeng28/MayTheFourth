@@ -15,7 +15,8 @@ namespace MayTheFourth.Sprites {
 
         public MillenniumFalcon(Game1 game) : base(game) {
             scale = 1 / 1f;
-            vel_max = 10f;
+            vel_max = 100f;
+            acc_max = 10f;
 
             bullets = new BulletManager(game, this);
         }
@@ -34,6 +35,7 @@ namespace MayTheFourth.Sprites {
         }
 
         public override void Update(GameTime gameTime) {
+            ResetAcceleration();
             MoveWithKeyboard(game.io.kb, game.io.kb_old);
             MoveWithGamePad(game.io.pad1, game.io.pad1_old);
             Friction();
@@ -42,7 +44,7 @@ namespace MayTheFourth.Sprites {
 
             // TEST
             if (game.io.kb.IsKeyDown(Keys.Space)) {
-                Shoot();
+                bullets.ShootStraight();
             }
             
             base.Update(gameTime);
@@ -52,10 +54,6 @@ namespace MayTheFourth.Sprites {
             bullets.Draw(gameTime);
 
             base.Draw(gameTime);
-        }
-
-        public void Shoot() {
-            bullets.Add();
         }
 
     }

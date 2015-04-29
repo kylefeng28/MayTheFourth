@@ -42,14 +42,16 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
-        public void Add() {
+        public void ShootStraight() {
             Bullet bullet = new Bullet(game);
+
             bullet.pos = sprite.pos;
             bullet.pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(sprite.rotation));
             bullet.pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(sprite.rotation));
-            bullet.rotation = sprite.rotation; 
+
+            bullet.revolution = sprite.rotation;
             bullet.texture = bulletTexture;
-            bullet.vel_max = 1f;
+            bullet.vel_max = 10f;
 
             bulletList.Add(bullet);
         }

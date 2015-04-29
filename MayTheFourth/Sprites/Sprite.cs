@@ -13,17 +13,24 @@ namespace MayTheFourth.Sprites {
     public class Sprite : DrawableGameComponent {
         protected Game1 game;
 
+        // Graphics
         public Texture2D texture;
         public Rectangle drawBox;
         public float scale = 1f;
         public float rotation = 0f;
 
+        // Kinematics
         public Vector2 pos = Vector2.Zero;
         public Vector2 vel = Vector2.Zero;
         public Vector2 acc = Vector2.Zero;
 
         public float vel_max = 1f;
         public float acc_max = 1f;
+
+        // Circular motion
+        public float ang_pos = 0f;
+        public float ang_vel = 0f;
+        public float ang_acc = 0f;
 
         public Sprite(Game1 game) : base(game) {
             this.game = game;
@@ -38,7 +45,8 @@ namespace MayTheFourth.Sprites {
         }
 
         public override void Update(GameTime gameTime) {
-            Verlet();
+            Verlet(gameTime.ElapsedGameTime.Milliseconds / 16);
+            rotation = ang_pos;
 
             drawBox = CreateRectangle(texture, pos, scale);
 
@@ -54,16 +62,12 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
+        public virtual void ResetAcceleration() {
+            acc.X = 0;
+            acc.Y = 0;
+        }
 
         public void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old) {
-            /*
-            if (kb.IsKeyDown(Keys.D)) {
-                MoveRight();
-            }
-            if (kb.IsKeyDown(Keys.A)) {
-                MoveLeft();
-            }
-             */
             if (kb.IsKeyDown(Keys.W)) Forward(10);
             if (kb.IsKeyDown(Keys.S)) Forward(-10);
             if (kb.IsKeyDown(Keys.D)) Turn(5);
@@ -84,8 +88,8 @@ namespace MayTheFourth.Sprites {
 
         public void Forward(int dir = 1) {
             if (vel.Length() < vel_max) {
-                acc.X = (float) (dir * acc_max * Math.Cos(rotation));
-                acc.Y = (float) (dir * acc_max * Math.Sin(rotation));
+                acc.X = (float) (Math.Sign(dir) * acc_max * Math.Cos(rotation));
+                acc.Y = (float) (Math.Sign(dir) * acc_max * Math.Sin(rotation));
             }
             else {
                 acc.X = 0;
@@ -94,7 +98,7 @@ namespace MayTheFourth.Sprites {
         }
 
         public void Turn(float ang = 1) {
-            rotation += (float) (ang / 180 * Math.PI);
+            ang_pos += (float) (ang / 180 * Math.PI);
         }
 
         public void Friction() {
@@ -110,6 +114,9 @@ namespace MayTheFourth.Sprites {
         public void Verlet(float dt = 1f) {
             vel += acc * dt;
             pos += vel * dt;
+
+            ang_vel += ang_acc * dt;
+            ang_pos += ang_vel * dt;
         }
 
         public Rectangle CreateRectangle(Texture2D texture, Vector2 pos, float scale = 1f) {

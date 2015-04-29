@@ -16,14 +16,19 @@ namespace MayTheFourth {
     /// This is the main type for your game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game {
+        // Graphics
         public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
+        public Camera camera;
 
+        // States
         public GameStateManager stateManager;
         public IOManager io;
 
+        // Screens
         public TitleScreen titleScreen;
 
+        // Objects
         public MillenniumFalcon player;
 
         public Game1() {
@@ -41,6 +46,8 @@ namespace MayTheFourth {
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize() {
+            camera = new Camera(this);
+
             stateManager = new GameStateManager(this);
             io = new IOManager(this);
 
@@ -104,12 +111,13 @@ namespace MayTheFourth {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, camera.TransformMatrix());
 
             switch (stateManager.state) {
             case GameState.Title: {
+                    camera.Follow(player);
                     titleScreen.Draw(spriteBatch, gameTime);
                     player.Draw(gameTime);
                     break;
