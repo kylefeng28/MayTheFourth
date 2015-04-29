@@ -29,6 +29,9 @@ namespace MayTheFourth {
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = 800 * 2;
+            graphics.PreferredBackBufferHeight = 600;
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace MayTheFourth {
         /// </summary>
         protected override void Initialize() {
             stateManager = new GameStateManager(this);
-            io = new IOManager();
+            io = new IOManager(this);
 
             titleScreen = new TitleScreen(this);
             player = new MillenniumFalcon(this);
@@ -101,7 +104,7 @@ namespace MayTheFourth {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 

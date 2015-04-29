@@ -10,11 +10,14 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth {
-    public class IOManager {
+    public class IOManager : GameComponent {
         public GamePadState pad1, pad1_old;
         public KeyboardState kb, kb_old;
 
-        public void Update(GameTime gameTime) {
+        public IOManager(Game1 game) : base(game) {
+        }
+
+        public override void Update(GameTime gameTime) {
             pad1_old = pad1;
             kb_old = kb;
 

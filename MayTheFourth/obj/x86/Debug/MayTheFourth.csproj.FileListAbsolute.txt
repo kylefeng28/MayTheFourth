@@ -16,3 +16,4 @@ E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.exe
 E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Millennium Falcon.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\pixel.xnb
+E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Bullet.xnb

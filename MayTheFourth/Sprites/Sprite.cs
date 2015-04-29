@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth.Sprites {
     public class Sprite : DrawableGameComponent {
-        private Game1 game;
+        protected Game1 game;
 
         public Texture2D texture;
         public Rectangle drawBox;
@@ -38,10 +38,6 @@ namespace MayTheFourth.Sprites {
         }
 
         public override void Update(GameTime gameTime) {
-            MoveWithKeyboard(game.io.kb, game.io.kb_old);
-
-            Friction();
-            
             Verlet();
 
             drawBox = CreateRectangle(texture, pos, scale);
@@ -70,15 +66,20 @@ namespace MayTheFourth.Sprites {
              */
             if (kb.IsKeyDown(Keys.W)) Forward(10);
             if (kb.IsKeyDown(Keys.S)) Forward(-10);
-            if (kb.IsKeyDown(Keys.D)) Turn(10);
-            if (kb.IsKeyDown(Keys.A)) Turn(-10);
+            if (kb.IsKeyDown(Keys.D)) Turn(5);
+            if (kb.IsKeyDown(Keys.A)) Turn(-5);
+            if (kb.IsKeyDown(Keys.Enter)) {
+                // TEST
+                pos.X = 0;
+                pos.Y = 0;
+            }
         }
 
         public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
-            /*
-             if (pad.ThumbSticks.Left.X > 0)
-                MoveRight(1);
-             */
+            if (Math.Abs(pad.ThumbSticks.Left.X) > 0)
+                Turn(pad.ThumbSticks.Left.X * 10);
+            if (pad.Triggers.Right > 0)
+                Forward();
         }
 
         public void Forward(int dir = 1) {
@@ -99,7 +100,7 @@ namespace MayTheFourth.Sprites {
         public void Friction() {
             int dir = Math.Sign(vel.X);
             
-            if (Math.Abs(vel.X) > 0) {
+            if (Math.Abs(vel.Length()) > 0) {
                 // acc.X = -dir * 0.5f;
                 vel *= 0.9f;
             }
