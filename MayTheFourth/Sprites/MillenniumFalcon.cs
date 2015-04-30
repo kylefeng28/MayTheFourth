@@ -28,8 +28,8 @@ namespace MayTheFourth.Sprites {
 
         protected override void LoadContent() {
             ContentManager Content = Game.Content;
-            texture = Content.Load<Texture2D>("Millennium Falcon");
-            bullets.bulletTexture = Content.Load<Texture2D>("Bullet"); // TEST
+            texture = Content.Load<Texture2D>("Images/Millennium Falcon");
+            bullets.bulletTexture = Content.Load<Texture2D>("Images/Bullet"); // TEST
 
             base.LoadContent();
         }
@@ -42,10 +42,12 @@ namespace MayTheFourth.Sprites {
 
             bullets.Update(gameTime);
 
-            // TEST
+            // TEST START
             if (game.io.kb.IsKeyDown(Keys.Space)) {
-                bullets.ShootStraight();
+                bullets.Shoot();
             }
+            if (game.io.kb.IsKeyDown(Keys.D1)) bullets.thread = BulletThread.Straight;
+            if (game.io.kb.IsKeyDown(Keys.D2)) bullets.thread = BulletThread.EnergyBurst;
             
             base.Update(gameTime);
         }

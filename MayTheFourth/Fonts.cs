@@ -10,9 +10,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth {
-    public static class Extensions {
-        public static Vector2 ToVector2(this Point point) {
-            return new Vector2(point.X, point.Y);
+    public static class Fonts {
+        public static SpriteFont Debug;
+
+        public static void LoadContent(ContentManager Content) {
+            Debug = Content.Load<SpriteFont>("Fonts/Debug");
         }
     }
 }

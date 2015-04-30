@@ -17,3 +17,13 @@ E:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Millennium Falcon.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\pixel.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Bullet.xnb
+W:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.csprojResolveAssemblyReference.cache
+W:\MayTheFourth\MayTheFourth\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+W:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.exe
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.exe
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.pdb
+W:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Millennium Falcon.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\pixel.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Bullet.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Fonts\Debug.xnb

@@ -16,6 +16,7 @@ namespace MayTheFourth.Sprites {
         // Graphics
         public Texture2D texture;
         public Rectangle drawBox;
+        public Color color = Color.White;
         public float scale = 1f;
         public float rotation = 0f;
 
@@ -57,7 +58,7 @@ namespace MayTheFourth.Sprites {
             SpriteBatch spriteBatch = game.spriteBatch;
 
             Vector2 origin = GetOrigin(texture);
-            spriteBatch.Draw(texture, drawBox, null, Color.White, rotation, origin, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, drawBox, null, color, rotation, origin, SpriteEffects.None, 0f);
 
             base.Draw(gameTime);
         }
@@ -98,7 +99,7 @@ namespace MayTheFourth.Sprites {
         }
 
         public void Turn(float ang = 1) {
-            ang_pos += (float) (ang / 180 * Math.PI);
+            ang_pos += (float) (MathHelper.ToRadians(ang));
         }
 
         public void Friction() {

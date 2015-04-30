@@ -11,15 +11,19 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth.Sprites {
     public class Bullet : Sprite {
-        public float revolution = 0f;
+        public int EVAPORTATE_TIME = 100;
+        public int evaporateTimer;
 
         public Bullet(Game1 game) : base(game) {
-            ang_acc = 1;
+            evaporateTimer = EVAPORTATE_TIME;
         }
 
         public override void Update(GameTime gameTime) {
-            vel.X = (float) (vel_max * Math.Cos(revolution));
-            vel.Y = (float) (vel_max * Math.Sin(revolution));
+            if (evaporateTimer > 0) evaporateTimer--;
+            if (evaporateTimer == 0) Enabled = false;
+
+            color = Color.White * ((float) evaporateTimer / EVAPORTATE_TIME);
+
             base.Update(gameTime);
         }
 

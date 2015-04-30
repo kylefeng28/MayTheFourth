@@ -68,6 +68,7 @@ namespace MayTheFourth {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Fonts.LoadContent(Content);
             ChangeState(GameState.Title);
 
             base.LoadContent();
@@ -98,6 +99,8 @@ namespace MayTheFourth {
             switch (stateManager.state) {
             case GameState.Title: {
                     titleScreen.Update(gameTime);
+                    camera.Update(gameTime);
+                    camera.Follow(player);
                     player.Update(gameTime);
                     break;
                 }
@@ -117,7 +120,6 @@ namespace MayTheFourth {
 
             switch (stateManager.state) {
             case GameState.Title: {
-                    camera.Follow(player);
                     titleScreen.Draw(spriteBatch, gameTime);
                     player.Draw(gameTime);
                     break;

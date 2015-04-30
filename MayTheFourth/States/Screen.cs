@@ -62,7 +62,7 @@ namespace MayTheFourth.States {
             ContentManager Content = game.Content;
 
             // mainTheme = Content.Load<Song>(""); // TODO
-            background = Content.Load<Texture2D>("pixel"); // TODO
+            background = Content.Load<Texture2D>("Images/pixel"); // TODO
             
             base.LoadContent();
         }

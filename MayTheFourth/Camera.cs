@@ -23,6 +23,11 @@ namespace MayTheFourth {
             bounds = game.GraphicsDevice.Viewport.Bounds;
         }
 
+        public void Update(GameTime gameTime) {
+            MoveWithMouse(game.io.mouse, game.io.mouse_old);
+            MoveWithGamePad(game.io.pad1, game.io.pad1_old);
+        }
+
         public Matrix TransformMatrix() {
             return
                 Matrix.CreateTranslation(new Vector3(-pos.X, -pos.Y, 0))
@@ -35,5 +40,14 @@ namespace MayTheFourth {
             this.pos = sprite.pos;
         }
 
+        public void MoveWithMouse(MouseState mouse, MouseState mouse_old) {
+            float deltaScroll = mouse.ScrollWheelValue - mouse_old.ScrollWheelValue;
+            if (deltaScroll > 0) zoom *= 1.1f;
+            else if (deltaScroll < 0) zoom *= 0.9f;
+
+        }
+
+        public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
+        }
     }
 }
