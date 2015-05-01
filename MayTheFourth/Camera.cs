@@ -37,7 +37,7 @@ namespace MayTheFourth {
         }
 
         public void Follow(Sprite sprite) {
-            this.pos = sprite.pos;
+            this.pos = sprite.physics.pos;
         }
 
         public void MoveWithMouse(MouseState mouse, MouseState mouse_old) {

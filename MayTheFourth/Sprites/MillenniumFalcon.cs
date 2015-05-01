@@ -12,21 +12,22 @@ using Microsoft.Xna.Framework.Media;
 namespace MayTheFourth.Sprites {
     public class MillenniumFalcon : Sprite {
         public BulletManager bullets;
+        public float roll = 0f;
 
-        public MillenniumFalcon(Game1 game) : base(game) {
+        public MillenniumFalcon(Game1 game) : base(game) {//
             scale = 1 / 1f;
-            vel_max = 100f;
-            acc_max = 10f;
+            physics.vel_max = 100f;
+            physics.acc_max = 10f;
 
             bullets = new BulletManager(game, this);
         }
 
-        public override void Initialize() {
+        public override void Initialize() {//
             bullets.Initialize();
             base.Initialize();
         }
 
-        protected override void LoadContent() {
+        protected override void LoadContent() {//
             ContentManager Content = Game.Content;
             texture = Content.Load<Texture2D>("Images/Millennium Falcon");
             bullets.bulletTexture = Content.Load<Texture2D>("Images/Bullet"); // TEST
@@ -34,8 +35,8 @@ namespace MayTheFourth.Sprites {
             base.LoadContent();
         }
 
-        public override void Update(GameTime gameTime) {
-            ResetAcceleration();
+        public override void Update(GameTime gameTime) {//
+            physics.ResetAcceleration();
             MoveWithKeyboard(game.io.kb, game.io.kb_old);
             MoveWithGamePad(game.io.pad1, game.io.pad1_old);
             Friction();
@@ -43,16 +44,17 @@ namespace MayTheFourth.Sprites {
             bullets.Update(gameTime);
 
             // TEST START
-            if (game.io.kb.IsKeyDown(Keys.Space)) {
+            if (game.io.kb.IsKeyDown(Keys.Space)) {//
                 bullets.Shoot();
             }
             if (game.io.kb.IsKeyDown(Keys.D1)) bullets.thread = BulletThread.Straight;
             if (game.io.kb.IsKeyDown(Keys.D2)) bullets.thread = BulletThread.EnergyBurst;
+            if (game.io.kb.IsKeyDown(Keys.D3)) bullets.thread = BulletThread.Spiral;
             
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime) {
+        public override void Draw(GameTime gameTime) {//
             bullets.Draw(gameTime);
 
             base.Draw(gameTime);
