@@ -38,7 +38,7 @@ namespace MayTheFourth.Sprites {
         }
 
         public override void Update(GameTime gameTime) {
-            physics.Verlet(gameTime.ElapsedGameTime.Milliseconds / 16);
+            physics.Verlet((float) gameTime.ElapsedGameTime.Milliseconds / 16f);
             rotation = physics.ang_pos;
 
             drawBox = CreateRectangle(texture, physics.pos, scale);

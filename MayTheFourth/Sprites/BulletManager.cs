@@ -16,7 +16,7 @@ namespace MayTheFourth.Sprites {
         Butterfly,
         DoubleEllipse,
         Spiral,
-        Star,
+        Sakura,
     }
 
     public class BulletManager : DrawableGameComponent {
@@ -57,7 +57,7 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
-        public void Shoot() {
+        public void Shoot(GameTime gameTime) {
             float ang_pos = 0f;
             Vector2 pos = Vector2.Zero;
             Vector2 vel = Vector2.Zero;
@@ -145,9 +145,46 @@ namespace MayTheFourth.Sprites {
                     break;
                 }
             case BulletThread.Spiral: {
+                    for (int ang = 0; ang <= 360; ang += 360 / NUM_BULLETS) {
+                        ang_pos = sprite.physics.ang_pos + MathHelper.ToRadians(ang);
+                        float vel_max = 10f;
+                        texture = bulletTexture;
+
+                        pos = sprite.physics.pos;
+                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+
+                        vel.X = (float) (vel_max * Math.Cos(ang_pos));
+                        vel.Y = (float) (vel_max * Math.Sin(ang_pos));
+
+                        Add(ang_pos, pos, vel, texture);
+                    }
                     break;
                 }
-            case BulletThread.Star: {
+            case BulletThread.Sakura: {
+                    for (int ang = 0; ang <= 360; ang += 360 / 5) {
+                        ang_pos = sprite.physics.ang_pos + MathHelper.ToRadians(ang);
+                        float vel_max = 10f;
+                        texture = bulletTexture;
+
+                        pos = sprite.physics.pos;
+                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+
+                        vel.X = (float) (vel_max * Math.Cos(ang_pos));
+                        vel.Y = (float) (vel_max * Math.Sin(ang_pos));
+
+                        Add(ang_pos, pos, vel, texture);
+
+                        pos = sprite.physics.pos;
+                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
+                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
+
+                        vel.X = (float) (vel_max * Math.Cos(ang_pos));
+                        vel.Y = (float) (vel_max * Math.Sin(ang_pos));
+
+                        Add(ang_pos, pos, vel, texture);
+                    }
                     break;
                 }
             }

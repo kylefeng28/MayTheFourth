@@ -45,12 +45,15 @@ namespace MayTheFourth.Sprites {
 
             // TEST
             if (game.io.kb.IsKeyDown(Keys.Space)) {
-                bullets.Shoot();
+                bullets.Shoot(gameTime);
             }
+
             if (game.io.kb.IsKeyDown(Keys.D1)) bullets.thread = BulletThread.Linear;
             if (game.io.kb.IsKeyDown(Keys.D2)) bullets.thread = BulletThread.EnergyBurst;
             if (game.io.kb.IsKeyDown(Keys.D3)) bullets.thread = BulletThread.Butterfly;
             if (game.io.kb.IsKeyDown(Keys.D4)) bullets.thread = BulletThread.DoubleEllipse;
+            if (game.io.kb.IsKeyDown(Keys.D5)) bullets.thread = BulletThread.Spiral;
+            if (game.io.kb.IsKeyDown(Keys.D6)) bullets.thread = BulletThread.Sakura;
             
             base.Update(gameTime);
         }

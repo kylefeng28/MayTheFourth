@@ -27,5 +27,14 @@ namespace MayTheFourth {
             kb = Keyboard.GetState();
             mouse = Mouse.GetState();
         }
+
+        public bool IsGamePadButtonTapped(Buttons button) {
+            return pad1.IsButtonDown(button) && pad1_old.IsButtonUp(button);
+        }
+
+        public bool IsKeyTapped(Keys key) {
+            return kb.IsKeyDown(key) && kb_old.IsKeyUp(key);
+        }
+
     }
 }
