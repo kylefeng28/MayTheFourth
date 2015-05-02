@@ -22,6 +22,9 @@ namespace MayTheFourth.Sprites {
 
         public Physics physics = new Physics();
 
+        public float vel_max; // = 1f;
+        public float acc_max; // = 1f;
+
         public Sprite(Game1 game) : base(game) {
             this.game = game;
         }
@@ -74,9 +77,9 @@ namespace MayTheFourth.Sprites {
         }
 
         public void Forward(int dir = 1) {
-            if (physics.vel.Length() < physics.vel_max) {
-                physics.acc.X = (float) (Math.Sign(dir) * physics.acc_max * Math.Cos(physics.ang_pos));
-                physics.acc.Y = (float) (Math.Sign(dir) * physics.acc_max * Math.Sin(physics.ang_pos));
+            if (physics.vel.Length() < vel_max) {
+                physics.acc.X = (float) (Math.Sign(dir) * acc_max * Math.Cos(physics.ang_pos));
+                physics.acc.Y = (float) (Math.Sign(dir) * acc_max * Math.Sin(physics.ang_pos));
             }
             else {
                 physics.acc.X = 0;
@@ -85,12 +88,12 @@ namespace MayTheFourth.Sprites {
         }
 
         public void TurnYaw(float ang = 1) {
-            physics.ang_pos += (float) (MathHelper.ToRadians(ang));
+            physics.ang_vel = (float) (MathHelper.ToRadians(ang));
         }
 
         public void Roll(float ang = 1) {
-            physics.pos.X += (float) (ang * Math.Cos(physics.ang_pos));
-            physics.pos.Y += (float) (ang * Math.Sin(physics.ang_pos));
+            physics.vel.X = (float) (ang * Math.Cos(physics.ang_pos));
+            physics.vel.Y = (float) (ang * Math.Sin(physics.ang_pos));
         }
 
         public void Friction() {
@@ -100,6 +103,9 @@ namespace MayTheFourth.Sprites {
                 physics.vel *= 0.9f;
             }
 
+            if (Math.Abs(physics.ang_vel) > 0) {
+                physics.ang_vel *= 0.9f;
+            }
         }
 
         public Rectangle CreateRectangle(Texture2D texture, Vector2 pos, float scale = 1f) {

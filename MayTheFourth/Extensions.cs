@@ -14,5 +14,11 @@ namespace MayTheFourth {
         public static Vector2 ToVector2(this Point point) {
             return new Vector2(point.X, point.Y);
         }
+
+        public static Vector2 Unit(this Vector2 v) {
+            Vector2 v_hat = v;
+            v_hat.Normalize();
+            return v_hat;
+        }
     }
 }
