@@ -37,6 +37,24 @@
       <Output>W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Fonts\Debug.xnb</Output>
       <Time>2015-04-29T22:12:28-04:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Dalek.png</Source>
+      <Name>Images\Dalek</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Dalek.xnb</Output>
+      <Time>2015-05-02T22:13:24-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Backgrounds\FalconFlyer.png</Source>
+      <Name>Backgrounds\FalconFlyer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Backgrounds\FalconFlyer.xnb</Output>
+      <Time>2015-05-02T22:24:52-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

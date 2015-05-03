@@ -28,3 +28,5 @@ E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Millennium Falcon.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\pixel.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Bullet.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Fonts\Debug.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Dalek.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Backgrounds\FalconFlyer.xnb

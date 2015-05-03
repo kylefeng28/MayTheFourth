@@ -38,8 +38,9 @@ namespace MayTheFourth {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            graphics.PreferredBackBufferWidth = 800 * 2;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.IsFullScreen = false;
         }
 
         /// <summary>
@@ -75,6 +76,8 @@ namespace MayTheFourth {
             Fonts.LoadContent(Content);
             ChangeState(GameState.Title);
 
+            ChangeState(GameState.Playing); // TEST
+
             base.LoadContent();
         }
 
@@ -103,6 +106,10 @@ namespace MayTheFourth {
             switch (stateManager.state) {
             case GameState.Title: {
                     titleScreen.Update(gameTime);
+                    camera.pos = Vector2.Zero;
+                    break;
+                }
+            case GameState.Playing: {
                     camera.Update(gameTime);
                     camera.Follow(player1.ship);
                     player1.Update(gameTime);
@@ -124,6 +131,9 @@ namespace MayTheFourth {
 
             switch (stateManager.state) {
             case GameState.Title: {
+                    break;
+                }
+            case GameState.Playing: {
                     titleScreen.Draw(spriteBatch, gameTime);
                     player1.Draw(gameTime);
                     break;
@@ -141,6 +151,12 @@ namespace MayTheFourth {
             switch (newState) {
             case GameState.Title: {
                     // MediaPlayer.Play(titleScreen.mainTheme);
+                    break;
+                }
+            case GameState.Playing: {
+                    break;
+                }
+            case GameState.GameOver: {
                     break;
                 }
             }

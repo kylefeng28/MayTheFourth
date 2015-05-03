@@ -17,15 +17,6 @@ namespace MayTheFourth.Sprites {
             bullets = new BulletManager(game, this);
         }
 
-        public override void Initialize() {
-            bullets.Initialize();
-            base.Initialize();
-        }
-
-        protected override void LoadContent() {
-            base.LoadContent();
-        }
-
         public override void Update(GameTime gameTime) {
             Friction();
 
@@ -39,6 +30,23 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
+        public override void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old, GameTime gameTime) {
+            base.MoveWithKeyboard(kb, kb_old, gameTime);
+
+            if (kb.IsKeyDown(Keys.Space)) {
+                bullets.Shoot(gameTime);
+            }
+        }
+
+        public override void MoveWithGamePad(GamePadState pad, GamePadState pad_old, GameTime gameTime) {
+            base.MoveWithGamePad(pad, pad_old, gameTime);
+
+            if (pad.IsButtonDown(Buttons.A)) {
+                bullets.Shoot(gameTime);
+                game.io.Rumble(pad, 1f, 1f, 20);
+            }
+        }
+
     }
 
     public class MillenniumFalcon : Spaceship {
@@ -47,12 +55,6 @@ namespace MayTheFourth.Sprites {
             scale = 1 / 1f;
             vel_max = 100f;
             acc_max = 10f;
-
-            bullets = new BulletManager(game, this);
-        }
-
-        public override void Initialize() {
-            base.Initialize();
         }
 
         protected override void LoadContent() {
@@ -62,14 +64,6 @@ namespace MayTheFourth.Sprites {
             bullets.bulletColor = Color.Green;
 
             base.LoadContent();
-        }
-
-        public override void Update(GameTime gameTime) {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(GameTime gameTime) {
-            base.Draw(gameTime);
         }
 
     }

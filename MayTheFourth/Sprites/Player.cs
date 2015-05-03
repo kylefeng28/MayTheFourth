@@ -30,24 +30,20 @@ namespace MayTheFourth.Sprites {
         public override void Update(GameTime gameTime) {
             ship.physics.ResetAcceleration();
 
-            ship.MoveWithKeyboard(game.io.kb, game.io.kb_old);
+            ship.MoveWithKeyboard(game.io.kb, game.io.kb_old, gameTime);
 
             switch (playerIndex) {
             case PlayerIndex.One: {
-                    ship.MoveWithGamePad(game.io.pad1, game.io.pad1_old);
+                ship.MoveWithGamePad(game.io.pad1, game.io.pad1_old, gameTime);
                     break;
                 }
             case PlayerIndex.Two: {
-                    ship.MoveWithGamePad(game.io.pad2, game.io.pad2_old);
+                ship.MoveWithGamePad(game.io.pad2, game.io.pad2_old, gameTime);
                     break;
                 }
             }
 
             ship.Update(gameTime);
-
-            if (game.io.kb.IsKeyDown(Keys.Space)) {
-                ship.bullets.Shoot(gameTime);
-            }
 
             if (game.io.kb.IsKeyDown(Keys.D1)) ship.bullets.thread = BulletThread.Linear;
             if (game.io.kb.IsKeyDown(Keys.D2)) ship.bullets.thread = BulletThread.EnergyBurst;

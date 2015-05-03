@@ -115,7 +115,7 @@
     <Compile Include="Sprites\Bullet.cs" />
     <Compile Include="Sprites\BulletManager.cs" />
     <Compile Include="Sprites\BulletThread.cs" />
-    <Compile Include="Sprites\MillenniumFalcon.cs" />
+    <Compile Include="Sprites\Ships.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

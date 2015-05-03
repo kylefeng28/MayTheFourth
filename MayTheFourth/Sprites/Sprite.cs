@@ -55,7 +55,7 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
-        public void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old) {
+        public virtual void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old, GameTime gameTime) {
             if (kb.IsKeyDown(Keys.W)) Forward(10);
             if (kb.IsKeyDown(Keys.S)) Forward(-10);
             if (kb.IsKeyDown(Keys.D)) Roll(5);
@@ -64,7 +64,7 @@ namespace MayTheFourth.Sprites {
             if (kb.IsKeyDown(Keys.Q)) TurnYaw(-5);
         }
 
-        public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
+        public virtual void MoveWithGamePad(GamePadState pad, GamePadState pad_old, GameTime gameTime) {
             if (Math.Abs(pad.ThumbSticks.Left.X) > 0)
                 TurnYaw(pad.ThumbSticks.Left.X * 10);
             if (Math.Abs(pad.ThumbSticks.Right.X) > 0)

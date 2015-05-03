@@ -25,10 +25,21 @@ namespace MayTheFourth {
             kb_old = kb;
             mouse_old = mouse;
 
+            if (rumbleCounter1 == 0) {
+                GamePad.SetVibration(PlayerIndex.One, 0f, 0f);
+            }
+            else if (rumbleCounter1 > 0) rumbleCounter1--;
+
+            if (rumbleCounter2 == 0) {
+                GamePad.SetVibration(PlayerIndex.Two, 0f, 0f);
+            }
+            else if (rumbleCounter2 > 0) rumbleCounter2--;
+
             pad1 = GamePad.GetState(PlayerIndex.One);
             pad2 = GamePad.GetState(PlayerIndex.Two);
             kb = Keyboard.GetState();
             mouse = Mouse.GetState();
+
         }
 
         public bool IsGamePadButtonTapped(Buttons button) {
@@ -37,6 +48,18 @@ namespace MayTheFourth {
 
         public bool IsKeyTapped(Keys key) {
             return kb.IsKeyDown(key) && kb_old.IsKeyUp(key);
+        }
+
+        private int rumbleCounter1 = 0, rumbleCounter2 = 0;
+        public void Rumble(GamePadState pad, float leftMotor, float rightMotor, int ticks) {
+            if (pad == pad1) {
+                GamePad.SetVibration(PlayerIndex.One, leftMotor, rightMotor);
+                rumbleCounter1 = ticks;
+            }
+            else if (pad == pad2) {
+                GamePad.SetVibration(PlayerIndex.Two, leftMotor, rightMotor);
+                rumbleCounter2 = ticks;
+            }
         }
 
     }

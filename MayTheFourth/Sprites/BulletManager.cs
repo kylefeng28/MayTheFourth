@@ -25,7 +25,7 @@ namespace MayTheFourth.Sprites {
         public BulletManager(Game1 game, Sprite sprite) : base(game) {
             this.game = game;
             this.sprite = sprite;
-            this.thread = BulletThread.EnergyBurst;
+            this.thread = BulletThread.Linear;
         }
 
         public override void Update(GameTime gameTime) {

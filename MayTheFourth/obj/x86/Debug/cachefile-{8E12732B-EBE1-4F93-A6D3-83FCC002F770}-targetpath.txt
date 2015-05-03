@@ -2,3 +2,5 @@ Content\Images\Millennium Falcon.xnb
 Content\Images\pixel.xnb
 Content\Images\Bullet.xnb
 Content\Fonts\Debug.xnb
+Content\Images\Dalek.xnb
+Content\Backgrounds\FalconFlyer.xnb
