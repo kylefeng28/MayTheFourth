@@ -116,7 +116,7 @@ namespace MayTheFourth {
                 }
             case GameState.Playing: {
                     camera.Update(gameTime);
-                    camera.Follow(player1.ship);
+                    camera.Follow(player1.ship, player2.ship);
                     player1.Update(gameTime);
                     player2.Update(gameTime);
                     break;

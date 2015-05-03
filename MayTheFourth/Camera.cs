@@ -43,6 +43,23 @@ namespace MayTheFourth {
             this.pos = MathHelperExtensions.SmoothStep(this.pos, sprite.physics.pos, 0.5f);
         }
 
+        public void Follow(Sprite sprite1, Sprite sprite2) {
+            Vector2 pos1 = sprite1.physics.pos;
+            Vector2 pos2 = sprite2.physics.pos;
+            Vector2 pos_avg = (pos1 + pos2) / 2f;
+            Vector2 pos_diff = pos2 - pos1;
+
+            this.pos = MathHelperExtensions.SmoothStep(this.pos, pos_avg, 0.5f);
+
+            float zoomAmount;
+            if (pos_diff.Length() > 0) {
+                zoomAmount = 1000 / pos_diff.Length();
+            }
+            else zoomAmount = 1f;
+
+            this.zoom = MathHelper.SmoothStep(this.zoom, zoomAmount, 1f);
+        }
+
         public void Zoom(float dir) {
             if (dir > 0) zoom *= 1.1f;
             else if (dir < 0) zoom *= 0.9f;

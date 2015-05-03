@@ -76,6 +76,7 @@ namespace MayTheFourth.Sprites {
                 if (kb.IsKeyDown(Keys.Left)) ship.Roll(-5);
                 if (kb.IsKeyDown(Keys.PageDown)) ship.TurnYaw(5);
                 if (kb.IsKeyDown(Keys.Delete)) ship.TurnYaw(-5);
+                if (kb.IsKeyDown(Keys.Space)) ship.bullets.Shoot(gameTime);
             }
         }
 
