@@ -30,9 +30,11 @@ namespace MayTheFourth {
 
         // Objects
         public MillenniumFalcon millenniumFalcon;
+        public XWing xwing;
 
         // Player and AI
         public Player player1;
+        public Player player2;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -56,11 +58,16 @@ namespace MayTheFourth {
             io = new IOManager(this);
 
             titleScreen = new TitleScreen(this);
-            millenniumFalcon = new MillenniumFalcon(this);
-            player1 = new Player(this, millenniumFalcon, PlayerIndex.One);
-
             titleScreen.Initialize();
+
+            millenniumFalcon = new MillenniumFalcon(this);
+            xwing = new XWing(this);
+
+            player1 = new Player(this, millenniumFalcon, PlayerIndex.One);
             player1.Initialize();
+
+            player2 = new Player(this, xwing, PlayerIndex.Two);
+            player2.Initialize();
 
             base.Initialize();
         }
@@ -74,9 +81,7 @@ namespace MayTheFourth {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Fonts.LoadContent(Content);
-            ChangeState(GameState.Title);
-
-            ChangeState(GameState.Playing); // TEST
+            stateManager.ChangeState(GameState.Title);
 
             base.LoadContent();
         }
@@ -106,13 +111,14 @@ namespace MayTheFourth {
             switch (stateManager.state) {
             case GameState.Title: {
                     titleScreen.Update(gameTime);
-                    camera.pos = Vector2.Zero;
+                    camera.pos = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
                     break;
                 }
             case GameState.Playing: {
                     camera.Update(gameTime);
                     camera.Follow(player1.ship);
                     player1.Update(gameTime);
+                    player2.Update(gameTime);
                     break;
                 }
             }
@@ -131,11 +137,12 @@ namespace MayTheFourth {
 
             switch (stateManager.state) {
             case GameState.Title: {
+                    titleScreen.Draw(gameTime);
                     break;
                 }
             case GameState.Playing: {
-                    titleScreen.Draw(spriteBatch, gameTime);
                     player1.Draw(gameTime);
+                    player2.Draw(gameTime);
                     break;
                 }
             }
@@ -145,21 +152,5 @@ namespace MayTheFourth {
             base.Draw(gameTime);
         }
 
-        protected void ChangeState(GameState newState) {
-            stateManager.state = newState;
-
-            switch (newState) {
-            case GameState.Title: {
-                    // MediaPlayer.Play(titleScreen.mainTheme);
-                    break;
-                }
-            case GameState.Playing: {
-                    break;
-                }
-            case GameState.GameOver: {
-                    break;
-                }
-            }
-        }
     }
 }

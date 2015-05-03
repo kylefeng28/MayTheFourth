@@ -22,7 +22,6 @@ W:\MayTheFourth\MayTheFourth\bin\x86\Debug\MayTheFourth.pdb
 W:\MayTheFourth\MayTheFourth\obj\x86\Debug\MayTheFourth.pdb
 W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Millennium Falcon.xnb
 W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\pixel.xnb
-W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Bullet.xnb
 W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Fonts\Debug.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Millennium Falcon.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\pixel.xnb
@@ -30,3 +29,31 @@ E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Bullet.xnb
 E:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Fonts\Debug.xnb
 W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Dalek.xnb
 W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Backgrounds\FalconFlyer.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\1UP.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ATTACK.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ATTACK2.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ATTACK3.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ATTACK4.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ATTACK5.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\blaster.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\BONUS.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\BONUS2.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\BONUS3.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\CAUTION.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\DEAD.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\DEFEATED.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\GUN.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\LASER.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\LASER2.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\MASTER SPARK.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\ORIN.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\POWER UP.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\SPELLCARD.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\TWINKLE.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\TWINKLE2.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\TWINKLE3.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Songs\Star Wars Theme.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Songs\Star Wars Theme.wma
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\Laser.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Sounds\SHIP_LASER.xnb
+W:\MayTheFourth\MayTheFourth\bin\x86\Debug\Content\Images\XWing.xnb

@@ -22,6 +22,13 @@ namespace MayTheFourth.Sprites {
         public float bullet_vel_max = 10f;
         public int numBullets = 36;
 
+        public int shootDelay = 5;
+        public int shootBurst = 5;
+        public int shootBurstTimer = 0;
+        public int shootTimer = 0;
+
+        public SoundEffect shootSound;
+
         public BulletManager(Game1 game, Sprite sprite) : base(game) {
             this.game = game;
             this.sprite = sprite;
@@ -38,6 +45,8 @@ namespace MayTheFourth.Sprites {
                 }
             }
 
+            shootTimer--;
+
             base.Update(gameTime);
         }
 
@@ -52,28 +61,22 @@ namespace MayTheFourth.Sprites {
         }
 
         public void Shoot(GameTime gameTime) {
-            float ang_pos = 0f;
-            Vector2 pos = Vector2.Zero;
-            Vector2 vel = Vector2.Zero;
-
-            switch (thread) {
-            case BulletThread.Linear: {
-                    ang_pos = sprite.physics.yaw_pos;
-
-                    pos = sprite.physics.pos;
-                    pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
-                    pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
-
-                    vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                    vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
-
-                    Add(ang_pos, pos, vel, bulletTexture, bulletColor);
-
-                    break;
+            if (shootTimer <= 0) {
+                shootBurstTimer--;
+                if (shootBurstTimer <= 0) {
+                    shootBurstTimer = shootBurst;
+                    shootTimer = shootDelay;
                 }
-            case BulletThread.EnergyBurst: {
-                    for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
-                        ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+
+                float ang_pos = 0f;
+                Vector2 pos = Vector2.Zero;
+                Vector2 vel = Vector2.Zero;
+
+                shootSound.Play();
+
+                switch (thread) {
+                case BulletThread.Linear: {
+                        ang_pos = sprite.physics.yaw_pos;
 
                         pos = sprite.physics.pos;
                         pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
@@ -84,95 +87,113 @@ namespace MayTheFourth.Sprites {
 
                         Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
+                        break;
                     }
-                    break;
-                }
-            case BulletThread.Butterfly: {
-                    for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
-                        ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+                case BulletThread.EnergyBurst: {
+                        for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
+                            ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
-                        vel.X = (float) (bullet_vel_max * Math.Sin(ang_pos));
-                        vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
-                        vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (-bullet_vel_max * Math.Cos(ang_pos));
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
-
+                        }
+                        break;
                     }
-                break;
-                }
-            case BulletThread.DoubleEllipse: {
-                    for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
-                        ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+                case BulletThread.Butterfly: {
+                        for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
+                            ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
-                        vel.X = (float) (-bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
+                            vel.X = (float) (bullet_vel_max * Math.Sin(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
-                        vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (-bullet_vel_max * Math.Sin(ang_pos));
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (-bullet_vel_max * Math.Cos(ang_pos));
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
+                        }
+                        break;
                     }
-                    break;
-                }
-            case BulletThread.Spiral: {
-                    for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
-                        ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+                case BulletThread.DoubleEllipse: {
+                        for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
+                            ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
+                            vel.X = (float) (-bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                        vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos));
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (-bullet_vel_max * Math.Sin(ang_pos));
 
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+
+                        }
+                        break;
                     }
-                    break;
-                }
-            case BulletThread.Sakura: {
-                    for (int ang = 0; ang <= 360; ang += 360 / 5) {
-                        ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+                case BulletThread.Spiral: {
+                        for (int ang = 0; ang <= 360; ang += 360 / numBullets) {
+                            ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
 
-                        vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
 
-                        pos = sprite.physics.pos;
-                        pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
-                        pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
-
-                        vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
-                        vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
-
-                        Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                        }
+                        break;
                     }
-                    break;
+                case BulletThread.Sakura: {
+                        for (int ang = 0; ang <= 360; ang += 360 / 5) {
+                            ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
+
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos - gameTime.TotalGameTime.Milliseconds / 100f));
+
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+
+                            pos = sprite.physics.pos;
+                            pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
+                            pos.Y += (float) (sprite.texture.Width / 2 * Math.Sin(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
+
+                            vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
+                            vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
+
+                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                        }
+                        break;
+                    }
                 }
+
+
             }
         }
 

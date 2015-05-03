@@ -34,7 +34,9 @@ namespace MayTheFourth.States {
             base.Update(gameTime);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime) {
+        public override void Draw(GameTime gameTime) {
+            SpriteBatch spriteBatch = game.spriteBatch;
+
             spriteBatch.Draw(background, backgroundRect, Color.White);
         }
 
@@ -61,10 +63,19 @@ namespace MayTheFourth.States {
         protected override void LoadContent() {
             ContentManager Content = game.Content;
 
-            // mainTheme = Content.Load<Song>(""); // TODO
+            mainTheme = Content.Load<Song>("Songs/Star Wars Theme"); // TODO
             background = Content.Load<Texture2D>("Backgrounds/FalconFlyer"); // TODO
             
             base.LoadContent();
         }
+
+        public override void Update(GameTime gameTime) {
+            if (game.io.kb.IsKeyDown(Keys.Enter) || game.io.pad1.IsButtonDown(Buttons.Start)) {
+                game.stateManager.ChangeState(GameState.Playing);
+            }
+            
+            base.Update(gameTime);
+        }
+
     }
 }

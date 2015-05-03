@@ -122,7 +122,7 @@
     <Compile Include="Sprites\Player.cs" />
     <Compile Include="States\GameState.cs" />
     <Compile Include="States\GameStateManager.cs" />
-    <Compile Include="States\Screen.cs" />
+    <Compile Include="States\Screens.cs" />
     <Compile Include="Sprites\Sprite.cs" />
   </ItemGroup>
   <ItemGroup>

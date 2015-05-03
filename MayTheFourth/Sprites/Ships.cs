@@ -30,22 +30,6 @@ namespace MayTheFourth.Sprites {
             base.Draw(gameTime);
         }
 
-        public override void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old, GameTime gameTime) {
-            base.MoveWithKeyboard(kb, kb_old, gameTime);
-
-            if (kb.IsKeyDown(Keys.Space)) {
-                bullets.Shoot(gameTime);
-            }
-        }
-
-        public override void MoveWithGamePad(GamePadState pad, GamePadState pad_old, GameTime gameTime) {
-            base.MoveWithGamePad(pad, pad_old, gameTime);
-
-            if (pad.IsButtonDown(Buttons.A)) {
-                bullets.Shoot(gameTime);
-                game.io.Rumble(pad, 1f, 1f, 20);
-            }
-        }
 
     }
 
@@ -60,11 +44,34 @@ namespace MayTheFourth.Sprites {
         protected override void LoadContent() {
             ContentManager Content = Game.Content;
             texture = Content.Load<Texture2D>("Images/Millennium Falcon");
-            bullets.bulletTexture = Content.Load<Texture2D>("Images/Bullet"); // TEST
+            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser"); // TEST
+            bullets.shootSound = Content.Load<SoundEffect>("Sounds/SHIP_LASER");
             bullets.bulletColor = Color.Green;
 
             base.LoadContent();
         }
 
     }
+
+    public class XWing : Spaceship {
+
+        public XWing(Game1 game) : base(game) {
+            scale = 1 / 1f;
+            vel_max = 100f;
+            acc_max = 10f;
+        }
+
+        protected override void LoadContent() {
+            ContentManager Content = Game.Content;
+            texture = Content.Load<Texture2D>("Images/XWing");
+            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser"); // TEST
+            bullets.shootSound = Content.Load<SoundEffect>("Sounds/SHIP_LASER");
+            bullets.bulletColor = Color.Red;
+
+            base.LoadContent();
+        }
+
+    }
+
+
 }

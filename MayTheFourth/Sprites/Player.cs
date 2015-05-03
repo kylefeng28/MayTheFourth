@@ -30,15 +30,15 @@ namespace MayTheFourth.Sprites {
         public override void Update(GameTime gameTime) {
             ship.physics.ResetAcceleration();
 
-            ship.MoveWithKeyboard(game.io.kb, game.io.kb_old, gameTime);
+            MoveWithKeyboard(game.io.kb, game.io.kb_old, gameTime);
 
             switch (playerIndex) {
             case PlayerIndex.One: {
-                ship.MoveWithGamePad(game.io.pad1, game.io.pad1_old, gameTime);
+                MoveWithGamePad(game.io.pad1, game.io.pad1_old, gameTime);
                     break;
                 }
             case PlayerIndex.Two: {
-                ship.MoveWithGamePad(game.io.pad2, game.io.pad2_old, gameTime);
+                MoveWithGamePad(game.io.pad2, game.io.pad2_old, gameTime);
                     break;
                 }
             }
@@ -57,6 +57,40 @@ namespace MayTheFourth.Sprites {
             ship.Draw(gameTime);
             
             base.Draw(gameTime);
+        }
+
+        public virtual void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old, GameTime gameTime) {
+            if (playerIndex == PlayerIndex.One) {
+                if (kb.IsKeyDown(Keys.W)) ship.Forward(10);
+                if (kb.IsKeyDown(Keys.S)) ship.Forward(-10);
+                if (kb.IsKeyDown(Keys.D)) ship.Roll(5);
+                if (kb.IsKeyDown(Keys.A)) ship.Roll(-5);
+                if (kb.IsKeyDown(Keys.E)) ship.TurnYaw(5);
+                if (kb.IsKeyDown(Keys.Q)) ship.TurnYaw(-5);
+                if (kb.IsKeyDown(Keys.Space)) ship.bullets.Shoot(gameTime);
+            }
+            else if (playerIndex == PlayerIndex.Two) {
+                if (kb.IsKeyDown(Keys.Up)) ship.Forward(10);
+                if (kb.IsKeyDown(Keys.Down)) ship.Forward(-10);
+                if (kb.IsKeyDown(Keys.Right)) ship.Roll(5);
+                if (kb.IsKeyDown(Keys.Left)) ship.Roll(-5);
+                if (kb.IsKeyDown(Keys.PageDown)) ship.TurnYaw(5);
+                if (kb.IsKeyDown(Keys.Delete)) ship.TurnYaw(-5);
+            }
+        }
+
+        public virtual void MoveWithGamePad(GamePadState pad, GamePadState pad_old, GameTime gameTime) {
+            if (Math.Abs(pad.ThumbSticks.Left.X) > 0)
+                ship.TurnYaw(pad.ThumbSticks.Left.X * 10);
+            if (Math.Abs(pad.ThumbSticks.Right.X) > 0)
+                ship.Roll(pad.ThumbSticks.Right.X * 10);
+            if (pad.Triggers.Right > 0)
+                ship.Forward();
+
+            if (pad.IsButtonDown(Buttons.A)) {
+                ship.bullets.Shoot(gameTime);
+                game.io.Rumble(pad, 1f, 1f, 20);
+            }
         }
 
     }
