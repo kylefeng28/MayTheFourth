@@ -13,6 +13,7 @@ namespace MayTheFourth.Sprites {
     public class Bullet : Sprite {
         public int EVAPORTATE_TIME = 100;
         public int evaporateTimer;
+        public Color baseColor;
 
         public Bullet(Game1 game) : base(game) {
             evaporateTimer = EVAPORTATE_TIME;
@@ -22,7 +23,7 @@ namespace MayTheFourth.Sprites {
             if (evaporateTimer > 0) evaporateTimer--;
             if (evaporateTimer == 0) Enabled = false;
 
-            color = Color.White * ((float) evaporateTimer / EVAPORTATE_TIME);
+            color = baseColor * ((float) evaporateTimer / EVAPORTATE_TIME);
 
             base.Update(gameTime);
         }

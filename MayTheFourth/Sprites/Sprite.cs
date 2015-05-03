@@ -10,8 +10,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth.Sprites {
-    public class Sprite : DrawableGameComponent {
-        protected Game1 game;
+    public abstract class Sprite : DrawableGameComponent {
+        public Game1 game;
 
         // Graphics
         public Texture2D texture;
@@ -39,7 +39,7 @@ namespace MayTheFourth.Sprites {
 
         public override void Update(GameTime gameTime) {
             physics.Verlet((float) gameTime.ElapsedGameTime.Milliseconds / 16f);
-            rotation = physics.ang_pos;
+            rotation = physics.yaw_pos;
 
             drawBox = CreateRectangle(texture, physics.pos, scale);
 
@@ -58,28 +58,25 @@ namespace MayTheFourth.Sprites {
         public void MoveWithKeyboard(KeyboardState kb, KeyboardState kb_old) {
             if (kb.IsKeyDown(Keys.W)) Forward(10);
             if (kb.IsKeyDown(Keys.S)) Forward(-10);
-            if (kb.IsKeyDown(Keys.D)) Roll(10);
-            if (kb.IsKeyDown(Keys.A)) Roll(-10);
+            if (kb.IsKeyDown(Keys.D)) Roll(5);
+            if (kb.IsKeyDown(Keys.A)) Roll(-5);
             if (kb.IsKeyDown(Keys.E)) TurnYaw(5);
             if (kb.IsKeyDown(Keys.Q)) TurnYaw(-5);
-            if (kb.IsKeyDown(Keys.Enter)) {
-                // TEST
-                physics.pos.X = 0;
-                physics.pos.Y = 0;
-            }
         }
 
         public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
             if (Math.Abs(pad.ThumbSticks.Left.X) > 0)
                 TurnYaw(pad.ThumbSticks.Left.X * 10);
+            if (Math.Abs(pad.ThumbSticks.Right.X) > 0)
+                Roll(pad.ThumbSticks.Right.X * 10);
             if (pad.Triggers.Right > 0)
                 Forward();
         }
 
         public void Forward(int dir = 1) {
             if (physics.vel.Length() < vel_max) {
-                physics.acc.X = (float) (Math.Sign(dir) * acc_max * Math.Cos(physics.ang_pos));
-                physics.acc.Y = (float) (Math.Sign(dir) * acc_max * Math.Sin(physics.ang_pos));
+                physics.acc.X = (float) (Math.Sign(dir) * acc_max * Math.Cos(physics.yaw_pos));
+                physics.acc.Y = (float) (Math.Sign(dir) * acc_max * Math.Sin(physics.yaw_pos));
             }
             else {
                 physics.acc.X = 0;
@@ -88,12 +85,12 @@ namespace MayTheFourth.Sprites {
         }
 
         public void TurnYaw(float ang = 1) {
-            physics.ang_vel = (float) (MathHelper.ToRadians(ang));
+            physics.yaw_vel = (float) (MathHelper.ToRadians(ang));
         }
 
         public void Roll(float ang = 1) {
-            physics.vel.X = (float) (ang * Math.Cos(physics.ang_pos));
-            physics.vel.Y = (float) (ang * Math.Sin(physics.ang_pos));
+            physics.acc.X = (float) (ang * Math.Cos(physics.yaw_pos + MathHelper.PiOver2));
+            physics.acc.Y = (float) (ang * Math.Sin(physics.yaw_pos + MathHelper.PiOver2));
         }
 
         public void Friction() {
@@ -103,8 +100,8 @@ namespace MayTheFourth.Sprites {
                 physics.vel *= 0.9f;
             }
 
-            if (Math.Abs(physics.ang_vel) > 0) {
-                physics.ang_vel *= 0.9f;
+            if (Math.Abs(physics.yaw_vel) > 0) {
+                physics.yaw_vel *= 0.9f;
             }
         }
 

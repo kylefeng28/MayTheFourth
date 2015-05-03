@@ -29,7 +29,10 @@ namespace MayTheFourth {
         public TitleScreen titleScreen;
 
         // Objects
-        public MillenniumFalcon player;
+        public MillenniumFalcon millenniumFalcon;
+
+        // Player and AI
+        public Player player1;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -52,10 +55,11 @@ namespace MayTheFourth {
             io = new IOManager(this);
 
             titleScreen = new TitleScreen(this);
-            player = new MillenniumFalcon(this);
+            millenniumFalcon = new MillenniumFalcon(this);
+            player1 = new Player(this, millenniumFalcon, PlayerIndex.One);
 
             titleScreen.Initialize();
-            player.Initialize();
+            player1.Initialize();
 
             base.Initialize();
         }
@@ -100,8 +104,8 @@ namespace MayTheFourth {
             case GameState.Title: {
                     titleScreen.Update(gameTime);
                     camera.Update(gameTime);
-                    camera.Follow(player);
-                    player.Update(gameTime);
+                    camera.Follow(player1.ship);
+                    player1.Update(gameTime);
                     break;
                 }
             }
@@ -121,7 +125,7 @@ namespace MayTheFourth {
             switch (stateManager.state) {
             case GameState.Title: {
                     titleScreen.Draw(spriteBatch, gameTime);
-                    player.Draw(gameTime);
+                    player1.Draw(gameTime);
                     break;
                 }
             }

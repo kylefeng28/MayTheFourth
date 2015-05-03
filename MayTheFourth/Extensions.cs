@@ -21,4 +21,18 @@ namespace MayTheFourth {
             return v_hat;
         }
     }
+
+    public static class MathHelperExtensions {
+        public static Vector2 SmoothStep(Vector2 v1, Vector2 v2, float amount) {
+            float X =  MathHelper.SmoothStep(v1.X, v2.X, amount);
+            float Y = MathHelper.SmoothStep(v1.Y, v2.Y, amount);
+            return new Vector2(X, Y);
+        }
+
+        public static Vector2 Lerp(Vector2 v1, Vector2 v2, float amount) {
+            float X = MathHelper.Lerp(v1.X, v2.X, amount);
+            float Y = MathHelper.Lerp(v1.Y, v2.Y, amount);
+            return new Vector2(X, Y);
+        }
+    }
 }

@@ -18,17 +18,17 @@ namespace MayTheFourth {
         public Vector2 vel; // = Vector2.Zero;
         public Vector2 acc; // = Vector2.Zero;
 
-        // Circular motion
-        public float ang_pos; // = 0f;
-        public float ang_vel; // = 0f;
-        public float ang_acc; // = 0f;
+        // Circular motion and flight dynamics
+        public float yaw_pos; // = 0f;
+        public float yaw_vel; // = 0f;
+        public float yaw_acc; // = 0f;
 
         public void Euler(float dt = 1f) {
             vel += acc * dt;
             pos += vel * dt;
 
-            ang_vel += ang_acc * dt;
-            ang_pos += ang_vel * dt;
+            yaw_vel += yaw_acc * dt;
+            yaw_pos += yaw_vel * dt;
         }
 
         public void Verlet(float dt = 1f) {
@@ -36,14 +36,14 @@ namespace MayTheFourth {
             vel += acc * dt;
             pos += (vel + vel_old) * 0.5f * dt;
 
-            float ang_vel_old = ang_vel;
-            ang_vel += ang_acc * dt;
-            ang_pos += (ang_vel + ang_vel_old) * 0.5f * dt;
+            float yaw_vel_old = yaw_vel;
+            yaw_vel += yaw_acc * dt;
+            yaw_pos += (yaw_vel + yaw_vel_old) * 0.5f * dt;
         }
 
         public void ResetAcceleration() {
             acc = Vector2.Zero;
-            ang_acc = 0f;
+            yaw_acc = 0f;
         }
     }
 }

@@ -10,9 +10,12 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using MayTheFourth.Sprites;
 
+// http://gamedev.stackexchange.com/questions/59301/xna-2d-camera-scrolling-why-use-matrix-transform
+
 namespace MayTheFourth {
     public class Camera {
-        protected Game1 game;
+        public Game1 game;
+
         public Vector2 pos = Vector2.Zero;
         public float zoom = 1f;
         public float rotation = 0f;
@@ -37,17 +40,22 @@ namespace MayTheFourth {
         }
 
         public void Follow(Sprite sprite) {
-            this.pos = sprite.physics.pos;
+            this.pos = MathHelperExtensions.SmoothStep(this.pos, sprite.physics.pos, 0.5f);
+        }
+
+        public void Zoom(float dir) {
+            if (dir > 0) zoom *= 1.1f;
+            else if (dir < 0) zoom *= 0.9f;
         }
 
         public void MoveWithMouse(MouseState mouse, MouseState mouse_old) {
             float deltaScroll = mouse.ScrollWheelValue - mouse_old.ScrollWheelValue;
-            if (deltaScroll > 0) zoom *= 1.1f;
-            else if (deltaScroll < 0) zoom *= 0.9f;
-
+            Zoom(deltaScroll);
         }
 
         public void MoveWithGamePad(GamePadState pad, GamePadState pad_old) {
+            if (pad.IsButtonDown(Buttons.LeftShoulder)) Zoom(-1);
+            if (pad.IsButtonDown(Buttons.RightShoulder)) Zoom(+1);
         }
     }
 }
