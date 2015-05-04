@@ -3,31 +3,9 @@ Content\Images\pixel.xnb
 Content\Fonts\Debug.xnb
 Content\Images\Dalek.xnb
 Content\Backgrounds\FalconFlyer.xnb
-Content\Sounds\1UP.xnb
-Content\Sounds\ATTACK.xnb
-Content\Sounds\ATTACK2.xnb
-Content\Sounds\ATTACK3.xnb
-Content\Sounds\ATTACK4.xnb
-Content\Sounds\ATTACK5.xnb
-Content\Sounds\blaster.xnb
-Content\Sounds\BONUS.xnb
-Content\Sounds\BONUS2.xnb
-Content\Sounds\BONUS3.xnb
-Content\Sounds\CAUTION.xnb
-Content\Sounds\DEAD.xnb
-Content\Sounds\DEFEATED.xnb
-Content\Sounds\GUN.xnb
-Content\Sounds\LASER.xnb
-Content\Sounds\LASER2.xnb
-Content\Sounds\MASTER SPARK.xnb
-Content\Sounds\ORIN.xnb
-Content\Sounds\POWER UP.xnb
-Content\Sounds\SPELLCARD.xnb
-Content\Sounds\TWINKLE.xnb
-Content\Sounds\TWINKLE2.xnb
-Content\Sounds\TWINKLE3.xnb
 Content\Songs\Star Wars Theme.xnb
 Content\Songs\Star Wars Theme.wma
 Content\Images\Laser.xnb
-Content\Sounds\SHIP_LASER.xnb
 Content\Images\XWing.xnb
+Content\Sounds\Falcon-Guns.xnb
+Content\Sounds\XWing-Laser.xnb

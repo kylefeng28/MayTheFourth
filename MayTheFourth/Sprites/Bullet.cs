@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MayTheFourth.Sprites {
     public class Bullet : Sprite {
-        public int EVAPORTATE_TIME = 100;
+        public int EVAPORTATE_TIME = 200;
         public int evaporateTimer;
         public Color baseColor;
 

@@ -44,8 +44,8 @@ namespace MayTheFourth.Sprites {
         protected override void LoadContent() {
             ContentManager Content = Game.Content;
             texture = Content.Load<Texture2D>("Images/Millennium Falcon");
-            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser"); // TEST
-            bullets.shootSound = Content.Load<SoundEffect>("Sounds/SHIP_LASER");
+            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser");
+            bullets.shootSound = Content.Load<SoundEffect>("Sounds/Falcon-Guns");
             bullets.bulletColor = Color.Green;
 
             base.LoadContent();
@@ -64,8 +64,8 @@ namespace MayTheFourth.Sprites {
         protected override void LoadContent() {
             ContentManager Content = Game.Content;
             texture = Content.Load<Texture2D>("Images/XWing");
-            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser"); // TEST
-            bullets.shootSound = Content.Load<SoundEffect>("Sounds/SHIP_LASER");
+            bullets.bulletTexture = Content.Load<Texture2D>("Images/Laser");
+            bullets.shootSound = Content.Load<SoundEffect>("Sounds/XWing-Laser");
             bullets.bulletColor = Color.Red;
 
             base.LoadContent();
