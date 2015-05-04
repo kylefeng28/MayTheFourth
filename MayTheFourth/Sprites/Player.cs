@@ -70,13 +70,13 @@ namespace MayTheFourth.Sprites {
                 if (kb.IsKeyDown(Keys.Space)) ship.bullets.Shoot(gameTime);
             }
             else if (playerIndex == PlayerIndex.Two) {
-                if (kb.IsKeyDown(Keys.Up)) ship.Forward(10);
-                if (kb.IsKeyDown(Keys.Down)) ship.Forward(-10);
-                if (kb.IsKeyDown(Keys.Right)) ship.Roll(5);
-                if (kb.IsKeyDown(Keys.Left)) ship.Roll(-5);
-                if (kb.IsKeyDown(Keys.PageDown)) ship.TurnYaw(5);
-                if (kb.IsKeyDown(Keys.Delete)) ship.TurnYaw(-5);
-                if (kb.IsKeyDown(Keys.Space)) ship.bullets.Shoot(gameTime);
+                if (kb.IsKeyDown(Keys.NumPad8)) ship.Forward(10);
+                if (kb.IsKeyDown(Keys.NumPad2)) ship.Forward(-10);
+                if (kb.IsKeyDown(Keys.NumPad6)) ship.Roll(5);
+                if (kb.IsKeyDown(Keys.NumPad4)) ship.Roll(-5);
+                if (kb.IsKeyDown(Keys.NumPad9)) ship.TurnYaw(5);
+                if (kb.IsKeyDown(Keys.NumPad7)) ship.TurnYaw(-5);
+                if (kb.IsKeyDown(Keys.NumPad0)) ship.bullets.Shoot(gameTime);
             }
         }
 

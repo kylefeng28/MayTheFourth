@@ -17,11 +17,15 @@ namespace MayTheFourth.Sprites {
         public BulletThread thread;
         private List<Bullet> bulletList = new List<Bullet>();
 
+        public MoodLight moodLight;
+
+        // Bullet properties
         public Texture2D bulletTexture;
         public Color bulletColor;
         public float bullet_vel_max = 10f;
         public int numBullets = 36;
 
+        // Shooting properties
         public int shootDelay = 5;
         public int shootBurst = 5;
         public int shootBurstTimer = 0;
@@ -168,6 +172,10 @@ namespace MayTheFourth.Sprites {
                         break;
                     }
                 case BulletThread.Sakura: {
+                        if (moodLight == null) {
+                            moodLight = new MoodLight(Color.Green); // Green makes cool firework patterns!
+                        }
+
                         for (int ang = 0; ang <= 360; ang += 360 / 5) {
                             ang_pos = sprite.physics.yaw_pos + MathHelper.ToRadians(ang);
 
@@ -178,7 +186,7 @@ namespace MayTheFourth.Sprites {
                             vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
                             vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            Add(ang_pos, pos, vel, bulletTexture, moodLight.color);
 
                             pos = sprite.physics.pos;
                             pos.X += (float) (sprite.texture.Width / 2 * Math.Cos(ang_pos + gameTime.TotalGameTime.Milliseconds / 100f));
@@ -187,7 +195,7 @@ namespace MayTheFourth.Sprites {
                             vel.X = (float) (bullet_vel_max * Math.Cos(ang_pos));
                             vel.Y = (float) (bullet_vel_max * Math.Sin(ang_pos));
 
-                            Add(ang_pos, pos, vel, bulletTexture, bulletColor);
+                            Add(ang_pos, pos, vel, bulletTexture, moodLight.color);
                         }
                         break;
                     }

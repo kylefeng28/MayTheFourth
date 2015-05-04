@@ -42,7 +42,7 @@ namespace MayTheFourth {
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace MayTheFourth {
             io.Update(gameTime);
 
             // Allows the game to exit
-            if (io.pad1.Buttons.Back == ButtonState.Pressed)
+            if (io.pad1.Buttons.Back == ButtonState.Pressed || io.kb.IsKeyDown(Keys.F10))
                 this.Exit();
 
             switch (stateManager.state) {
